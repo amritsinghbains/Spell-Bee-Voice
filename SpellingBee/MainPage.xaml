@@ -1,0 +1,116 @@
+﻿<phone:PhoneApplicationPage
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" xmlns:eim="clr-namespace:Microsoft.Expression.Interactivity.Media;assembly=Microsoft.Expression.Interactions"
+    x:Class="PhoneApp3.MainPage"
+    mc:Ignorable="d"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    shell:SystemTray.IsVisible="False">
+    <phone:PhoneApplicationPage.Resources>
+        <Storyboard x:Name="Storyboard1">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="image">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.9" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="-4"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.1" Value="6"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.2" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:3" Value="-254"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:3.2" Value="-672"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:5" Value="-630"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:6" Value="-378"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:6.2" Value="44"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:7.5" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="image">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.9" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.2" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:3" Value="-222"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:3.2" Value="-236"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:5" Value="-644"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:6" Value="-428"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:6.2" Value="-422"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:7.5" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.ScaleX)" Storyboard.TargetName="image">
+                <EasingDoubleKeyFrame KeyTime="0:0:3" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:3.2" Value="-1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:6" Value="-1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:6.2" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </phone:PhoneApplicationPage.Resources>
+
+    <phone:PhoneApplicationPage.FontFamily>
+        <StaticResource ResourceKey="PhoneFontFamilyNormal"/>
+    </phone:PhoneApplicationPage.FontFamily>
+    <phone:PhoneApplicationPage.FontSize>
+        <StaticResource ResourceKey="PhoneFontSizeNormal"/>
+    </phone:PhoneApplicationPage.FontSize>
+    <phone:PhoneApplicationPage.Foreground>
+        <StaticResource ResourceKey="PhoneForegroundBrush"/>
+    </phone:PhoneApplicationPage.Foreground>
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- LOCALIZATION NOTE:
+            To localize the displayed strings copy their values to appropriately named
+            keys in the app's neutral language resource file (AppResources.resx) then
+            replace the hard-coded text value between the attributes' quotation marks
+            with the binding clause whose path points to that string name.
+
+            For example:
+
+                Text="{Binding Path=LocalizedResources.ApplicationTitle, Source={StaticResource LocalizedStrings}}"
+
+            This binding points to the template's string resource named "ApplicationTitle".
+
+            Adding supported languages in the Project Properties tab will create a
+            new resx file per language that can carry the translated values of your
+            UI strings. The binding in these examples will cause the value of the
+            attributes to be drawn from the .resx file that matches the
+            CurrentUICulture of the app at run time.
+         -->
+        <!--Uncomment to see an alignment grid to help ensure your controls are
+            aligned on common boundaries.  The image has a top margin of -32px to
+            account for the System Tray. Set this to 0 (or remove the margin altogether)
+            if the System Tray is hidden.
+
+            Before shipping remove this XAML and the image itself.-->
+        <!--<Image Source="/Assets/AlignmentGrid.png" VerticalAlignment="Top" Height="800" Width="480" Margin="0,-32,0,0" Grid.Row="0" Grid.RowSpan="2" IsHitTestVisible="False" />-->
+        <!--TitlePanel contains the name of the application and page title-->
+        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28"/>
+
+        <!--ContentPanel - place additional content here-->
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="139*"/>
+                <ColumnDefinition Width="89*"/>
+            </Grid.ColumnDefinitions>
+            <Image Tap="Image_Tap" Margin="-14,-77,-10,0" Source="Assets/prev - Copy.png" Stretch="Fill" Grid.ColumnSpan="2"/>
+            <Image x:Name="image" Tap="Image_Tap" Margin="240,539,-384,-308" Source="Assets/onlybee.png" Stretch="Fill" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2">
+                <Image.RenderTransform>
+                    <CompositeTransform/>
+                </Image.RenderTransform>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Loaded">
+                        <eim:ControlStoryboardAction Storyboard="{StaticResource Storyboard1}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Image>
+            <TextBlock Tap="Image_Tap" HorizontalAlignment="Left" Margin="97,607,0,0" TextWrapping="Wrap" Text="PLAY" VerticalAlignment="Top" Height="52" Width="93" FontSize="36"/>
+
+        </Grid>
+        <MediaElement Source="/Assets/music/spellbeevoice.mp3" Name="sound" HorizontalAlignment="Left" Height="100" Margin="-14,885,0,-230" Grid.Row="1" VerticalAlignment="Top" Width="100"/>
+
+    </Grid>
+
+</phone:PhoneApplicationPage>
